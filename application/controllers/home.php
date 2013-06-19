@@ -2,26 +2,27 @@
 
 class home extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->view('home');
 	}
-}
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+	//insert user
+	public function insertUser(){
+		return $this->geomodel->insertUser(
+			//	$_POST["number"], $_POST["lit"], $_POST["long"]
+				$_POST["lit"], $_POST["long"]
+				);
+	}
+
+	//modify user location
+	public function modifyUserLocation(){
+		return $this->geomodel->modifyUserLocation(
+				$_POST["id"], $_POST["lit"], $_POST["long"]);
+	}
+	
+	//get user location
+	public function getUserLocation(){
+		return $this->getmodel->getUserLocation($_POST["id"]);
+	}
+}

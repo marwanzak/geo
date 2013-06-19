@@ -46,4 +46,50 @@ class geoModel extends CI_Model {
 				"salary" => $salary
 		));
 	}
+	
+	//get product from database
+	public function getProd($id){
+		$query = $this->db->get("products", array("id" => $id));
+		return $query->row();
+	}
+	
+	//get all products from database
+	public function getAllProds(){
+		$query = $this->db->get("products");
+		return $query->result();
+	}
+	
+	//get catagory products
+	public function getCatProducts($cat){
+		$query = $this->get_where("products", array("cat" => $cat));
+		return $query->result();
+	}
+
+	//calculate price
+	public function calculatePrice($product, $quantity){
+		return (int)$product*$quantity;
+	}
+	
+	//insert user properities
+	public function insertUser($num, $lit, $long){
+		$query = $this->db->insert("users", array(
+				"num" => $num,
+				"lit" => $lit,
+				"long" => $long
+				));
+		return ($query->affected_rows()>0)? $this->db->insert_id: "-1";
+	}
+	
+	//modify user location
+	public function modifyUserLocation($id, $lit, $long){
+		$this->db->where("id", $id);
+		return $this->db->update("users", array("lit" => $lit, "long" => $long));
+	}
+	
+	//get user location from database
+	public function getUserLocation($id){
+		$query = $this->db->get_where("users",array("id" => $id));
+		return $query->row();
+	}
+	
 }
