@@ -11,7 +11,7 @@ class home extends CI_Controller {
 	public function insertUser(){
 		return $this->geomodel->insertUser(
 			//	$_POST["number"], $_POST["lit"], $_POST["long"]
-				$_POST["lit"], $_POST["long"]
+				$_POST["lat"], $_POST["long"]
 				);
 	}
 
