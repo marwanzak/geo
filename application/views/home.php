@@ -23,10 +23,12 @@
 				<li class="prod_li"><div id="<?= $prod->id ?>" class="prod_div">
 						<label class="product_label"><?= $prod->product ?> </label><label
 							class="salary_label"><?= $prod->salary ?> </label>
-					</div></li>
+					</div>
+				</li>
 				<?php } 
 }?>
-			</ul></li>
+			</ul>
+		</li>
 		<?php }?>
 	</ul>
 	<div class="dialog_div" id="add_cart_dialog">

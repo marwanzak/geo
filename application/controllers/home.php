@@ -54,7 +54,7 @@ class home extends CI_Controller{
 
 	//insert product in database
 	public function insertProduct(){
-		$this->geomodel->insertProd($_POST["product"],$_POST["catagory"], $_POST["salary"]);
+		$this->geomodel->insertProd($_POST["product"],$_POST["catagory"], $_POST["salary"], $_POST["desc"]);
 		redirect("products", "refresh");
 	}
 
@@ -71,7 +71,7 @@ class home extends CI_Controller{
 		$query = $this->db->get($table);
 		switch($table){
 			case "products":
-				$headings = array("ID", "Catagory", "Product", "Salary");
+				$headings = array("ID", "Catagory", "Product", "Salary", "Description");
 				break;
 			case "catagories":
 				$headings = array("ID","Catagory");
@@ -87,7 +87,7 @@ class home extends CI_Controller{
 			switch($table){
 				case "products":
 					$cat = $this->geomodel->getCat($row->cat);
-					$rows[$i] = array($row->id,$cat->cat, $row->product, $row->salary);
+					$rows[$i] = array($row->id,$cat->cat, $row->product, $row->salary, $row->desc);
 					break;
 				case "catagories":
 					$rows[$i] = array($row->id,$row->cat);

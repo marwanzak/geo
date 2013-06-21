@@ -29,11 +29,12 @@ class geoModel extends CI_Model {
 	}
 	
 	//insert product in database
-	public function insertProd($prod, $cat, $salary){
+	public function insertProd($prod, $cat, $salary, $desc){
 		return $this->db->insert("products", array(
 				"product" => $prod,
 				"cat" => $cat,
-				"salary" => $salary
+				"salary" => $salary,
+				"desc" => $desc
 				));
 	}
 	
@@ -43,7 +44,8 @@ class geoModel extends CI_Model {
 		return $this->db->update("products", array(
 				"product" => $prod,
 				"cat" => $cat,
-				"salary" => $salary
+				"salary" => $salary,
+				"desc" => $desc
 		));
 	}
 	

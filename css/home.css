@@ -2,7 +2,7 @@
 	display: none;
 }
 
-input,select {
+.dialog_div input,.dialog_div select, .dialog_div textarea {
 	display: block;
 	margin-bottom: 20px;
 }

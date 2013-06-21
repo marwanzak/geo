@@ -8,7 +8,7 @@
 	rel="stylesheet" />
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="<?= base_url() ?>js/home.js"></script>
-<link href="<?= base_url() ?>css/home.css" rel="stylesheet"/>
+<link href="<?= base_url() ?>css/home.css" rel="stylesheet" />
 <meta charset="utf-8">
 <title>Admin page</title>
 </head>
@@ -23,6 +23,9 @@
 	if(count($rows)==0)
 		$this->table->add_row("No inputs");
 	foreach($rows as $row){
+$desc = $row[4];
+unset($row[4]);
+$row[4] = "<textarea disabled>".$desc."</textarea>";
 		$this->table->add_row($row);
 	}
 	echo $this->table->generate();
@@ -41,8 +44,11 @@
 					<?= $catagory->cat ?>
 				</option>
 				<?php }?>
-			</select> Product: <input type="text" name="product" id="add_product_name" />
-			Salary: <input type="number" name="salary" id="add_product_salary" onkeypress="return isNumberKey(event)" /> <input
+			</select> Product: <input type="text" name="product"
+				id="add_product_name" /> Salary: <input type="number" name="salary"
+				id="add_product_salary" onkeypress="return isNumberKey(event)" />
+				Description:
+				<textarea name = "desc"></textarea> <input
 				type="submit" value="add" class="add_but" />
 		</form>
 	</div>
@@ -54,8 +60,8 @@
 	<div id="add_catagory_dialog" class="dialog_div">
 		<form id="catagory_add_form" method="POST"
 			action="/geo/home/insertCatagory">
-			Catagory: <input type="text" name="catagory" id="add_catagory_name" /> <input
-				type="submit" value="add" class="add_but" />
+			Catagory: <input type="text" name="catagory" id="add_catagory_name" />
+			<input type="submit" value="add" class="add_but" />
 		</form>
 	</div>
 	<?php }?>
