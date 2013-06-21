@@ -7,24 +7,24 @@ class geoModel extends CI_Model {
 	
 	//insert cat in database
 	public function insertCat($cat){
-		return $this->db->insert("cats", array("cat" => $cat));
+		return $this->db->insert("catagories", array("cat" => $cat));
 	}
 	
 	//modify catagory in database
 	public function modifyCat($id, $cat){
 		$this->db->where("id", $id);
-		return $this->db->update("cats", array("cat"=> $cat));
+		return $this->db->update("catagories", array("cat"=> $cat));
 	}
 	
 	//get catagory from database
 	public function getCat($id){
-		$query = $this->db->get("cats", array("id" => $id));
+		$query = $this->db->get("catagories", array("id" => $id));
 		return $query->row();
 	}
 	
 	//get all catagor from database
 	public function getAllCats(){
-		$query = $this->db->get("cats");
+		$query = $this->db->get("catagories");
 		return $query->result();
 	}
 	
@@ -71,10 +71,9 @@ class geoModel extends CI_Model {
 	}
 	
 	//insert user properities
-	public function insertUser($num, $lit, $long){
+	public function insertUser($num, $lat, $long){
 		$query = $this->db->insert("users", array(
-				"num" => $num,
-				"lit" => $lit,
+				"lat" => $lat,
 				"long" => $long
 				));
 		return ($query->affected_rows()>0)? $this->db->insert_id: "-1";
@@ -83,7 +82,7 @@ class geoModel extends CI_Model {
 	//modify user location
 	public function modifyUserLocation($id, $lit, $long){
 		$this->db->where("id", $id);
-		return $this->db->update("users", array("lit" => $lit, "long" => $long));
+		return $this->db->update("users", array("latit" => $lit, "longit" => $long));
 	}
 	
 	//get user location from database

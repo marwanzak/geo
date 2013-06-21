@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Geo application</title>
+<meta charset="utf-8">
+<title>Geo application</title>
 </head>
 <body>
+	<?php 
+	$tmpl = array ( 'table_open'  => '<table class = "content_table"
+			cellpadding = "8" cellspacing = "3" align = "center">'
+	);
+	$this->table->set_template($tmpl);
+	$this->table->set_heading($headings);
 
-body
+	if(count($rows)==0)
+		$this->table->add_row("No inputs");
+	foreach($rows as $row){
+		$this->table->add_row($row);
+	}
+	echo $this->table->generate();
+	if($table == "products"){
+	?>
+	<form id="product_add_form" method="POST"
+		action="/geo/home/insertProduct">
+		<select id="product_catagories_select" name="catagory">
+			<option value="">Choose catagory</option>
+			<?php 
+			foreach($catagories as $catagory){
+	?>
+			<option value="<?= $catagory->id?>">
+				<?= $catagory->cat ?>
+			</option>
+			<?php }?>
+		</select> <input type="text" name="product" id="add_product_name" /> <input
+			type="text" name="salary" id="add_product_salary" /> <input
+			type="submit" value="add" class="add_but" />
 
+
+	</form>
+	<?php }
+	if($table == "catagories"){
+		?>
+	<form id="catagory_add_form" method="POST"
+		action="/geo/home/insertCatagory">
+		<input type="text" name="catagory" id="add_catagory_name" /> <input
+			type="submit" value="add" class="add_but" />
+
+
+	</form>
+	<?php }?>
 </body>
+
 </html>
