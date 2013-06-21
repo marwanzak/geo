@@ -18,7 +18,7 @@ class geoModel extends CI_Model {
 	
 	//get catagory from database
 	public function getCat($id){
-		$query = $this->db->get("catagories", array("id" => $id));
+		$query = $this->db->get_where("catagories", array("id" => $id));
 		return $query->row();
 	}
 	
@@ -49,7 +49,7 @@ class geoModel extends CI_Model {
 	
 	//get product from database
 	public function getProd($id){
-		$query = $this->db->get("products", array("id" => $id));
+		$query = $this->db->get_where("products", array("id" => $id));
 		return $query->row();
 	}
 	
@@ -90,5 +90,6 @@ class geoModel extends CI_Model {
 		$query = $this->db->get_where("users",array("id" => $id));
 		return $query->row();
 	}
+	
 	
 }

@@ -1,0 +1,45 @@
+.dialog_div {
+	display: none;
+}
+
+input,select {
+	display: block;
+	margin-bottom: 20px;
+}
+
+.main_ul {
+	list-style-type: none;
+	width: 200px;
+	padding: 0;
+}
+
+.cat_ul {
+	display: none;
+	list-style-type: none;
+	padding: 0;
+}
+
+.prod_li {
+	background-color: #eee;
+}
+
+.cat_li {
+	border: 1px solid #ccc;
+	background-color: #ccc;
+}
+
+.salary_label {
+	float: right;
+}
+
+#add_cart_dialog label {
+	display: block;
+}
+
+td {
+	text-align: center;
+}
+
+.cat_div label,.salary_label,.product_label,.cat_div,.prod_div {
+	cursor: pointer;
+}
